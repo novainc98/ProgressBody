@@ -1,4 +1,4 @@
-package progress_body.conexion.conexion;
+package progress_body.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,4 +45,3 @@ public class Conexion {
 //
 //    }
 }
-

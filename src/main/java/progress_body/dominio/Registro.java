@@ -29,115 +29,167 @@ public class Registro {
      * @param id El identificador único del registro.
      */
     public Registro(int id) {
-        this.id = id;
+        setId(id); // Establece el id usando el setter para validar.
     }
 
     /**
      * Constructor que inicializa un nuevo objeto Registro con las medidas corporales y la fecha.
      *
-     * @param peso Peso en kilogramos.
+     * @param peso           Peso en kilogramos.
      * @param bicepIzquierdo Medida del bíceps izquierdo en centímetros.
-     * @param bicepDerecho Medida del bíceps derecho en centímetros.
-     * @param cintura Medida de la cintura en centímetros.
-     * @param cuadriceps Medida del cuadríceps en centímetros.
-     * @param pantorrillas Medida de las pantorrillas en centímetros.
-     * @param fecha Fecha y hora del registro.
+     * @param bicepDerecho   Medida del bíceps derecho en centímetros.
+     * @param cintura        Medida de la cintura en centímetros.
+     * @param cuadriceps     Medida del cuadríceps en centímetros.
+     * @param pantorrillas   Medida de las pantorrillas en centímetros.
+     * @param fecha          Fecha y hora del registro.
      */
     public Registro(double peso, double bicepIzquierdo, double bicepDerecho,
                     double cintura, double cuadriceps, double pantorrillas,
                     Timestamp fecha) {
-        this.peso = peso;
-        this.bicepIzquierdo = bicepIzquierdo;
-        this.bicepDerecho = bicepDerecho;
-        this.cintura = cintura;
-        this.cuadriceps = cuadriceps;
-        this.pantorrillas = pantorrillas;
-        this.fecha = fecha;
+        setPeso(peso); // Establece el peso usando el setter para validar.
+        setBicepIzquierdo(bicepIzquierdo); // Establece la medida del bíceps izquierdo.
+        setBicepDerecho(bicepDerecho); // Establece la medida del bíceps derecho.
+        setCintura(cintura); // Establece la medida de la cintura.
+        setCuadriceps(cuadriceps); // Establece la medida del cuadríceps.
+        setPantorrillas(pantorrillas); // Establece la medida de las pantorrillas.
+        setFecha(fecha); // Establece la fecha del registro.
     }
 
     /**
      * Constructor que inicializa un nuevo objeto Registro con un id y las medidas corporales.
      *
-     * @param id El identificador único del registro.
-     * @param peso Peso en kilogramos.
+     * @param id             El identificador único del registro.
+     * @param peso           Peso en kilogramos.
      * @param bicepIzquierdo Medida del bíceps izquierdo en centímetros.
-     * @param bicepDerecho Medida del bíceps derecho en centímetros.
-     * @param cintura Medida de la cintura en centímetros.
-     * @param cuadriceps Medida del cuadríceps en centímetros.
-     * @param pantorrillas Medida de las pantorrillas en centímetros.
-     * @param fecha Fecha y hora del registro.
+     * @param bicepDerecho   Medida del bíceps derecho en centímetros.
+     * @param cintura        Medida de la cintura en centímetros.
+     * @param cuadriceps     Medida del cuadríceps en centímetros.
+     * @param pantorrillas   Medida de las pantorrillas en centímetros.
+     * @param fecha          Fecha y hora del registro.
      */
     public Registro(int id, double peso, double bicepIzquierdo, double bicepDerecho,
                     double cintura, double cuadriceps, double pantorrillas,
                     Timestamp fecha) {
         this(peso, bicepIzquierdo, bicepDerecho, cintura, cuadriceps, pantorrillas, fecha);
-        this.id = id;
+        this.id = id; // Asigna el id directamente.
     }
 
     // Métodos getter y setter
 
     public int getId() {
-        return id;
+        return id; // Retorna el id del registro.
     }
 
-    public void setId(int id) {
-        this.id = id;
+    private void setId(int id) {
+        try {
+            if (id <= 0) {
+                throw new IllegalArgumentException("El id debe ser mayor que 0."); // Verifica que el id sea positivo.
+            }
+            this.id = id; // Asigna el id si es válido.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        }
     }
 
     public double getPeso() {
-        return peso;
+        return peso; // Retorna el peso del registro.
     }
 
     public void setPeso(double peso) {
-        this.peso = peso;
+        try {
+            if (peso <= 0) {
+                throw new IllegalArgumentException("El peso debe ser mayor que 0."); // Verifica que el peso sea positivo.
+            }
+            this.peso = peso; // Asigna el peso si es válido.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        }
     }
 
     public double getBicepIzquierdo() {
-        return bicepIzquierdo;
+        return bicepIzquierdo; // Retorna la medida del bíceps izquierdo.
     }
 
     public void setBicepIzquierdo(double bicepIzquierdo) {
-        this.bicepIzquierdo = bicepIzquierdo;
+        try {
+            if (bicepIzquierdo <= 0) {
+                throw new IllegalArgumentException("La medida del Bicep Izquierdo debe ser mayor que 0."); // Verifica que la medida sea positiva.
+            }
+            this.bicepIzquierdo = bicepIzquierdo; // Asigna la medida si es válida.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        }
     }
 
     public double getBicepDerecho() {
-        return bicepDerecho;
+        return bicepDerecho; // Retorna la medida del bíceps derecho.
     }
 
     public void setBicepDerecho(double bicepDerecho) {
-        this.bicepDerecho = bicepDerecho;
+        try {
+            if (bicepDerecho <= 0) {
+                throw new IllegalArgumentException("La medida del Bicep Derecho debe ser mayor que 0."); // Verifica que la medida sea positiva.
+            }
+            this.bicepDerecho = bicepDerecho; // Asigna la medida si es válida.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        }
     }
 
     public double getCintura() {
-        return cintura;
+        return cintura; // Retorna la medida de la cintura.
     }
 
     public void setCintura(double cintura) {
-        this.cintura = cintura;
+        try {
+            if (cintura <= 0) {
+                throw new IllegalArgumentException("La medida de la cintura debe ser mayor que 0."); // Verifica que la medida sea positiva.
+            }
+            this.cintura = cintura; // Asigna la medida si es válida.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        }
     }
 
     public double getCuadriceps() {
-        return cuadriceps;
+        return cuadriceps; // Retorna la medida del cuadríceps.
     }
 
     public void setCuadriceps(double cuadriceps) {
-        this.cuadriceps = cuadriceps;
+        try {
+            if (cuadriceps <= 0) {
+                throw new IllegalArgumentException("La medida del cuadriceps debe ser mayor que 0."); // Verifica que la medida sea positiva.
+            }
+            this.cuadriceps = cuadriceps; // Asigna la medida si es válida.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        }
     }
 
     public double getPantorrillas() {
-        return pantorrillas;
+        return pantorrillas; // Retorna la medida de las pantorrillas.
     }
 
     public void setPantorrillas(double pantorrillas) {
-        this.pantorrillas = pantorrillas;
+        try {
+            if (pantorrillas <= 0) {
+                throw new IllegalArgumentException("La medida de las pantorrillas debe ser mayor que 0."); // Verifica que la medida sea positiva.
+            }
+            this.pantorrillas = pantorrillas; // Asigna la medida si es válida.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        }
     }
 
     public Timestamp getFecha() {
-        return fecha;
+        return fecha; // Retorna la fecha del registro.
     }
 
-    public void setFecha(Timestamp fecha) {
-        this.fecha = fecha;
+    private void setFecha(Timestamp fecha) {
+        if (fecha == null) {
+            throw new IllegalArgumentException("La fecha no puede ser nula"); // Verifica que la fecha no sea nula.
+        }
+        this.fecha = fecha; // Asigna la fecha si es válida.
     }
 
     /**
@@ -158,7 +210,6 @@ public class Registro {
                 ", fecha=" + fecha +
                 '}';
     }
-
     /**
      * Compara este objeto con otro para determinar si son iguales.
      *

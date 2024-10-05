@@ -16,12 +16,12 @@ public interface IRegistroDAO {
     List<Registro> listarRegistros();
 
     /**
-     * Busca un registro por su identificador.
+     * Busca un registro por su objeto Registro.
      *
-     * @param id El identificador del registro.
+     * @param registro El objeto Registro a buscar.
      * @return true si el registro existe, false en caso contrario.
      */
-    boolean buscarRegistro(int id);
+    boolean buscarRegistro(Registro registro);
 
     /**
      * Verifica si un registro existe dado su identificador.

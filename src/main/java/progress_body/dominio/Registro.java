@@ -44,15 +44,20 @@ public class Registro {
      * @param fecha          Fecha y hora del registro.
      */
     public Registro(double peso, double bicepIzquierdo, double bicepDerecho,
-                    double cintura, double cuadriceps, double pantorrillas,
-                    Timestamp fecha) {
+                    double cintura, double cuadriceps, double pantorrillas) {
         setPeso(peso); // Establece el peso usando el setter para validar.
         setBicepIzquierdo(bicepIzquierdo); // Establece la medida del bíceps izquierdo.
         setBicepDerecho(bicepDerecho); // Establece la medida del bíceps derecho.
         setCintura(cintura); // Establece la medida de la cintura.
         setCuadriceps(cuadriceps); // Establece la medida del cuadríceps.
         setPantorrillas(pantorrillas); // Establece la medida de las pantorrillas.
-        setFecha(fecha); // Establece la fecha del registro.
+
+    }
+
+    public Registro(int id, double peso, double bicepIzquierdo, double bicepDerecho,
+                    double cintura, double cuadriceps, double pantorrillas) {
+        this(peso, bicepIzquierdo, bicepDerecho, cintura, cuadriceps, pantorrillas);
+        this.id = id;
     }
 
     /**
@@ -70,8 +75,9 @@ public class Registro {
     public Registro(int id, double peso, double bicepIzquierdo, double bicepDerecho,
                     double cintura, double cuadriceps, double pantorrillas,
                     Timestamp fecha) {
-        this(peso, bicepIzquierdo, bicepDerecho, cintura, cuadriceps, pantorrillas, fecha);
+        this(peso, bicepIzquierdo, bicepDerecho, cintura, cuadriceps, pantorrillas);
         this.id = id; // Asigna el id directamente.
+        this.fecha = fecha;
     }
 
     // Métodos getter y setter
@@ -80,15 +86,11 @@ public class Registro {
         return id; // Retorna el id del registro.
     }
 
-    private void setId(int id) {
-        try {
-            if (id <= 0) {
-                throw new IllegalArgumentException("El id debe ser mayor que 0."); // Verifica que el id sea positivo.
-            }
-            this.id = id; // Asigna el id si es válido.
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+    public void setId(int id) {
+        if (id <= 0) {
+            throw new IllegalArgumentException("El id debe ser mayor que 0."); // Verifica que el id sea positivo.
         }
+        this.id = id; // Asigna el id si es válido.
     }
 
     public double getPeso() {
@@ -96,14 +98,10 @@ public class Registro {
     }
 
     public void setPeso(double peso) {
-        try {
-            if (peso <= 0) {
-                throw new IllegalArgumentException("El peso debe ser mayor que 0."); // Verifica que el peso sea positivo.
-            }
-            this.peso = peso; // Asigna el peso si es válido.
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        if (peso <= 0) {
+            throw new IllegalArgumentException("El peso debe ser mayor que 0."); // Verifica que el peso sea positivo.
         }
+        this.peso = peso; // Asigna el peso si es válido.
     }
 
     public double getBicepIzquierdo() {
@@ -111,14 +109,10 @@ public class Registro {
     }
 
     public void setBicepIzquierdo(double bicepIzquierdo) {
-        try {
-            if (bicepIzquierdo <= 0) {
-                throw new IllegalArgumentException("La medida del Bicep Izquierdo debe ser mayor que 0."); // Verifica que la medida sea positiva.
-            }
-            this.bicepIzquierdo = bicepIzquierdo; // Asigna la medida si es válida.
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        if (bicepIzquierdo <= 0) {
+            throw new IllegalArgumentException("La medida del Bicep Izquierdo debe ser mayor que 0."); // Verifica que la medida sea positiva.
         }
+        this.bicepIzquierdo = bicepIzquierdo; // Asigna la medida si es válida.
     }
 
     public double getBicepDerecho() {
@@ -126,14 +120,10 @@ public class Registro {
     }
 
     public void setBicepDerecho(double bicepDerecho) {
-        try {
-            if (bicepDerecho <= 0) {
-                throw new IllegalArgumentException("La medida del Bicep Derecho debe ser mayor que 0."); // Verifica que la medida sea positiva.
-            }
-            this.bicepDerecho = bicepDerecho; // Asigna la medida si es válida.
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        if (bicepDerecho <= 0) {
+            throw new IllegalArgumentException("La medida del Bicep Derecho debe ser mayor que 0."); // Verifica que la medida sea positiva.
         }
+        this.bicepDerecho = bicepDerecho; // Asigna la medida si es válida.
     }
 
     public double getCintura() {
@@ -141,14 +131,10 @@ public class Registro {
     }
 
     public void setCintura(double cintura) {
-        try {
-            if (cintura <= 0) {
-                throw new IllegalArgumentException("La medida de la cintura debe ser mayor que 0."); // Verifica que la medida sea positiva.
-            }
-            this.cintura = cintura; // Asigna la medida si es válida.
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        if (cintura <= 0) {
+            throw new IllegalArgumentException("La medida de la cintura debe ser mayor que 0."); // Verifica que la medida sea positiva.
         }
+        this.cintura = cintura; // Asigna la medida si es válida.
     }
 
     public double getCuadriceps() {
@@ -156,14 +142,10 @@ public class Registro {
     }
 
     public void setCuadriceps(double cuadriceps) {
-        try {
-            if (cuadriceps <= 0) {
-                throw new IllegalArgumentException("La medida del cuadriceps debe ser mayor que 0."); // Verifica que la medida sea positiva.
-            }
-            this.cuadriceps = cuadriceps; // Asigna la medida si es válida.
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        if (cuadriceps <= 0) {
+            throw new IllegalArgumentException("La medida del cuadriceps debe ser mayor que 0."); // Verifica que la medida sea positiva.
         }
+        this.cuadriceps = cuadriceps; // Asigna la medida si es válida.
     }
 
     public double getPantorrillas() {
@@ -171,21 +153,17 @@ public class Registro {
     }
 
     public void setPantorrillas(double pantorrillas) {
-        try {
-            if (pantorrillas <= 0) {
-                throw new IllegalArgumentException("La medida de las pantorrillas debe ser mayor que 0."); // Verifica que la medida sea positiva.
-            }
-            this.pantorrillas = pantorrillas; // Asigna la medida si es válida.
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage()); // Muestra un mensaje de error.
+        if (pantorrillas <= 0) {
+            throw new IllegalArgumentException("La medida de las pantorrillas debe ser mayor que 0."); // Verifica que la medida sea positiva.
         }
+        this.pantorrillas = pantorrillas; // Asigna la medida si es válida.
     }
 
     public Timestamp getFecha() {
         return fecha; // Retorna la fecha del registro.
     }
 
-    private void setFecha(Timestamp fecha) {
+    public void setFecha(Timestamp fecha) {
         if (fecha == null) {
             throw new IllegalArgumentException("La fecha no puede ser nula"); // Verifica que la fecha no sea nula.
         }
@@ -210,6 +188,7 @@ public class Registro {
                 ", fecha=" + fecha +
                 '}';
     }
+
     /**
      * Compara este objeto con otro para determinar si son iguales.
      *
